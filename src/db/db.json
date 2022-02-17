@@ -1,0 +1,163 @@
+{
+  "inventorytools": {
+    "Current Inventory": [],
+    "Inventory Tools": [
+      {
+        "name": "Products",
+        "link": "/addproducts"
+      },
+      {
+        "name": "Product Categories"
+      },
+      {
+        "name": "Batch Types"
+      },
+      {
+        "name": "Strain"
+      },
+      {
+        "name": "Brands"
+      },
+      {
+        "name": "Vendors & Laboratories"
+      },
+      {
+        "name": "Inventory Rooms"
+      },
+      {
+        "name": "Inventory Audits"
+      }
+    ],
+    "Pricing Tools": [
+      {
+        "name": "Pricingj Point"
+      },
+      {
+        "name": "Batch Level Pricing"
+      },
+      {
+        "name": "Member Level Pricing"
+      },
+      {
+        "name": "Tax Categories"
+      },
+      {
+        "name": "Pricing Options"
+      }
+    ],
+    "Batch Transfer": [
+      {
+        "name": "New Batches"
+      },
+      {
+        "name": "Purchase Order"
+      },
+      {
+        "name": "Inbound Transfer"
+      },
+      {
+        "name": "Quote"
+      },
+      {
+        "name": "Outbound Transfer"
+      },
+      {
+        "name": "Drivers"
+      },
+      {
+        "name": "Vehicles"
+      }
+    ]
+  },
+  "dashboard": {
+    "Dashboard Manager": ""
+  },
+  "Permission": {
+    "Permission": ""
+  },
+  "money": {
+    "Money Manager": "",
+    "Employee Close Till": "",
+    "Payout From Till": ""
+  },
+  "retail": {
+    "Check-In": "",
+    "Point Of Sale": "",
+    "Order Fulfillment": "",
+    "Customer Profile": "",
+    "Customer Profile Management": "",
+    "Retails Sale History": "",
+    "Retail Options": [
+      "Discount Manager",
+      "Loyalty Programs",
+      "Retails Settings",
+      "Doctors"
+    ]
+  },
+  "reports": {
+    "Reports Tool": ""
+  },
+  "location": {
+    "Sales Limit": "",
+    "Template Manager": "",
+    "Reservations": "",
+    "Import/Export Wizard": ""
+  },
+  "systemsettings": {
+    "Data Sharing Option": ""
+  },
+  "Support": {
+    "Create A Ticket ": "",
+    "View Training Documentation": ""
+  },
+  "headers": [
+    {
+      "align": "start",
+      "text": "Product Name",
+      "value": "name"
+    },
+    {
+      "text": "Gender",
+      "value": "gender"
+    },
+    {
+      "text": "Size",
+      "value": "size"
+    },
+    {
+      "text": "Color",
+      "value": "color"
+    },
+    {
+      "text": "Price",
+      "value": "totalprice"
+    },
+    {
+      "text": "Actions",
+      "value": "actions",
+      "sortable": false
+    }
+  ],
+  "products": [
+    {
+      "id": "a-mmGZC",
+      "name": "Shirt3updated",
+      "size": "30",
+      "gender": "male",
+      "color": "Blue",
+      "totalprice": 1620,
+      "price": "900",
+      "tax": "80"
+    },
+    {
+      "id": "w1Q2q0i",
+      "name": "Shirt1",
+      "size": "30",
+      "gender": "female",
+      "color": "Blue",
+      "totalprice": 4500,
+      "price": "3000",
+      "tax": "50"
+    }
+  ]
+}
