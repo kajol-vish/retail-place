@@ -22,19 +22,38 @@
                             :search="$store.state.search"
                         >
                             <template v-slot:[`item.actions`]="{ item }">
-                                <router-link to="/addproducts">
-                                    <v-icon small class="mr-2" @click="editProduct(item)">mdi-pencil</v-icon>
+                                <router-link v-if="!$store.state.editSwitch" :disabled="!$store.state.editSwitch">
+                                    <v-icon small class="mr-2" 
+                                    @click="editProduct(item)">
+                                    mdi-pencil
+                                    </v-icon>1
                                 </router-link>
-                                <v-icon small @click="deleteProduct(item.id)">mdi-delete</v-icon>
+                                <router-link to="/addproducts" v-else>
+                                    <v-icon small class="mr-2" 
+                                    @click="editProduct(item)">
+                                    mdi-pencil
+                                    </v-icon>
+                                </router-link>
+                                <v-icon small @click="deleteProduct(item.id)" 
+                                :disabled="!$store.state.deleteSwitch">mdi-delete</v-icon>
                             </template>
                         </v-data-table>
-                        <router-link to="/addproducts">
                             <v-btn
-                                class="ma-2 blue accent-4 white--text text-decoration-none"
-                                @click="addproduct"
-                            >Add Product</v-btn>
-                        </router-link>
+                                class="ma-2 blue accent-4 white--text" v-if="$store.state.addSwitch"
+                                @click="addproduct" v-bind:disabled="!$store.state.addSwitch"
+                            ><router-link to="/addproducts" class="text-decoration-none white--text" 
+                            >Add Product1
+                            </router-link>
+                            </v-btn>
+                            <v-btn
+                                class="ma-2 blue accent-4 white--text" v-else
+                                 v-bind:disabled="!$store.state.addSwitch"
+                            >
+                            Add Product
+                            </v-btn>
+                        
                     </v-card>
+                    
                 </v-col>
             </v-col>
         </v-row>
@@ -65,11 +84,11 @@ export default class Products extends Vue {
         const response = await axios.get("http://localhost:3000/products")
         this.$store.dispatch("Products", response);
     }
-    addproduct(item:any) {
-        this.$store.dispatch("AddProduct",item);
+    addproduct() {
+        this.$store.dispatch("AddProduct");
     }
    async beforeCreate(){
-const response = await axios.get("http://localhost:3000/products")
+        const response = await axios.get("http://localhost:3000/products")
         this.$store.dispatch("Products", response);
     }
 };

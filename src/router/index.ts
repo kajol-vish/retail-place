@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Products from "../components/Products.vue"
 import AddProducts from "../components/AddProducts.vue"
 import PermissionComponent from '../components/PermissionComponent.vue'
+import PointOfSale from '../components/PointOfSale.vue'
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,11 @@ const routes: Array<RouteConfig> = [
     path:"/permission",
     name:"Permission",
     component:PermissionComponent
+  },
+  {
+    path:"/pointofsale",
+    name:"Point Of Sale",
+    component:PointOfSale
   }
 ];
 

@@ -8,7 +8,10 @@
                 </v-tabs>
                 <v-tabs-items v-model="$store.state.tab" class="d-flex justify-center py-10 px-10">
                     <v-form ref="form" @submit.prevent="submit">
-                        <v-tab-item transition="fade-transition" class="tabitem elevation-4 px-10 py-10">
+                        <v-tab-item
+                            transition="fade-transition"
+                            class="tabitem elevation-4 px-10 py-10"
+                        >
                             <v-text-field
                                 type="input"
                                 label="Product Name"
@@ -36,22 +39,42 @@
                                 v-model="$store.state.productColor"
                             ></v-select>
                         </v-tab-item>
-                        <v-tab-item transition="fade-transition" class="tabitem elevation-4 px-10 py-10">
+                        <v-tab-item
+                            transition="fade-transition"
+                            class="tabitem elevation-4 px-10 py-10"
+                        >
                             <v-text-field
                                 label="Price"
                                 required
                                 class="pt-10"
                                 v-model="$store.state.productPrice"
                             ></v-text-field>
-                            <v-text-field label="Tax" required v-model="$store.state.productTax" class="mb-10"></v-text-field>
-                            <router-link to="/products" class="button">
-                                <v-btn class="blue accent-2 white--text">Cancel</v-btn>
+                            <v-text-field
+                                label="Tax"
+                                required
+                                v-model="$store.state.productTax"
+                                class="mb-10"
+                            ></v-text-field>
+                            <router-link to="/products" class="button" >
+                                <v-btn class="blue accent-2 white--text" @click="clearProduct">Cancel</v-btn>
                             </router-link>
-                            <router-link to="/products" class="button" v-if="$store.state.addButtonToggle">
-                                <v-btn type="submit" @click="submit" class="blue accent-2 white--text">Submit</v-btn>
+                            <router-link
+                                to="/products"
+                                class="button"
+                                v-if="$store.state.addButtonToggle"
+                            >
+                                <v-btn
+                                    type="submit"
+                                    @click="submit"
+                                    class="blue accent-2 white--text"
+                                >Submit</v-btn>
                             </router-link>
                             <router-link to="/products" class="button" v-else>
-                                <v-btn type="update" @click="update" class="blue accent-2 white--text">Update</v-btn>
+                                <v-btn
+                                    type="update"
+                                    @click="update"
+                                    class="blue accent-2 white--text"
+                                >Update</v-btn>
                             </router-link>
                         </v-tab-item>
                     </v-form>
@@ -80,16 +103,19 @@ export default class AddProducts extends Vue {
         this.$store.state.totalprice = parseInt(this.$store.state.productPrice) + (parseInt(this.$store.state.productPrice) * (parseInt(this.$store.state.productTax) / 100))
         const data = {
             name: this.$store.state.productName, size: this.$store.state.productSize, gender: this.$store.state.radioValue,
-            color: this.$store.state.productColor, totalprice: this.$store.state.totalprice, price:this.$store.state.productPrice,
-            tax:this.$store.state.productTax
+            color: this.$store.state.productColor, totalprice: this.$store.state.totalprice, price: this.$store.state.productPrice,
+            tax: this.$store.state.productTax
         }
         const response = await axios.post("http://localhost:3000/products", data)
         console.log(data)
         this.$store.dispatch("Products")
     }
 
-    update(){
+    update() {
         this.$store.dispatch("UpdateProduct");
+    }
+    clearProduct(){
+        this.$store.dispatch("AddProduct")
     }
 
 };
@@ -99,7 +125,7 @@ export default class AddProducts extends Vue {
     width: 600px;
     height: 400px;
 }
-.button{
+.button {
     text-decoration: none;
     margin: 20px;
 }

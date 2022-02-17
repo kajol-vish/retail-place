@@ -73,7 +73,8 @@
     "Dashboard Manager": ""
   },
   "Permission": {
-    "Permission": ""
+    "Permission": "",
+    "Point of Sale": ""
   },
   "money": {
     "Money Manager": "",
@@ -140,24 +141,81 @@
   ],
   "products": [
     {
-      "id": "a-mmGZC",
-      "name": "Shirt3updated",
-      "size": "30",
+      "name": "Shirt1",
+      "size": "28",
       "gender": "male",
-      "color": "Blue",
-      "totalprice": 1620,
-      "price": "900",
-      "tax": "80"
+      "color": "Green",
+      "totalprice": 110,
+      "price": "100",
+      "tax": "10",
+      "id": 1,
+      "units":30
     },
     {
-      "id": "w1Q2q0i",
-      "name": "Shirt1",
+      "name": "Dress1",
+      "size": "28",
+      "gender": "female",
+      "color": "Green",
+      "totalprice": 240,
+      "price": "200",
+      "tax": "20",
+      "id": 2,
+      "units":30
+    },
+    {
+      "name": "Shirt2",
+      "size": "30",
+      "gender": "male",
+      "color": "Red",
+      "totalprice": 240,
+      "price": "200",
+      "tax": "20",
+      "id": 3,
+      "units":30
+    },
+    {
+      "name": "Dress2",
       "size": "30",
       "gender": "female",
+      "color": "Red",
+      "totalprice": 390,
+      "price": "300",
+      "tax": "30",
+      "id": 4,
+      "units":30
+    },
+    {
+      "name": "Shirt3",
+      "size": "32",
+      "gender": "male",
       "color": "Blue",
-      "totalprice": 4500,
-      "price": "3000",
-      "tax": "50"
+      "totalprice": 336,
+      "price": "300",
+      "tax": "12",
+      "id": 5,
+      "units":30
+    },
+    {
+      "name": "Dress3",
+      "size": "32",
+      "gender": "female",
+      "color": "Blue",
+      "totalprice": 132,
+      "price": "100",
+      "tax": "32",
+      "id": 6,
+      "units":30
+    },
+    {
+      "name": "Shirt4",
+      "size": "34",
+      "gender": "male",
+      "color": "Purple",
+      "totalprice": 224,
+      "price": "200",
+      "tax": "12",
+      "id": 7,
+      "units":30
     }
   ]
 }

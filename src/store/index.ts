@@ -22,11 +22,22 @@ export interface State {
   colors: string[];
   radioValue: string;
 
+  productSwitch: boolean;
+  deleteSwitch: boolean;
+  addSwitch: boolean;
+  editSwitch: boolean;
+  productNameSwitch: boolean;
+  productSizeSwitch: boolean;
+  productColorSwitch: boolean;
+  GenderSwitch: boolean;
+  productPriceSwitch: boolean;
+  productTaxSwitch: boolean;
+
   addButtonToggle: boolean;
   drawer: boolean;
   inventory: any;
   dashboard: any;
-  permission:any;
+  permission: any;
   money: any;
   retail: any;
   reports: any;
@@ -48,6 +59,17 @@ export default new Vuex.Store<State>({
     productTax: '',
     totalprice: 0,
 
+    deleteSwitch: true,
+    addSwitch: true,
+    editSwitch: true,
+    productSwitch: true,
+    productNameSwitch: true,
+    productSizeSwitch: true,
+    productColorSwitch: true,
+    GenderSwitch: true,
+    productPriceSwitch: true,
+    productTaxSwitch: true,
+
     search: '',
     tab: null,
     select: null,
@@ -59,7 +81,7 @@ export default new Vuex.Store<State>({
 
     inventory: {},
     dashboard: {},
-    permission:{},
+    permission: {},
     money: {},
     retail: {},
     reports: {},
@@ -68,6 +90,44 @@ export default new Vuex.Store<State>({
     support: {}
   },
   mutations: {
+    isDisabled: (state, { event, switchVar }) => {
+      if (switchVar == 'switchProduct') {
+        if (event == false) {
+          state.productNameSwitch = event
+          state.productSizeSwitch = event
+          state.productColorSwitch = event
+          state.GenderSwitch = event
+          state.productPriceSwitch = event
+          state.productTaxSwitch = event
+          state.editSwitch = event
+          state.addSwitch == event
+          state.deleteSwitch == event
+          console.log("add dele",state.addSwitch,state.deleteSwitch)
+        }
+        else if (event == true) {
+          state.addSwitch == event
+          state.deleteSwitch == event
+          state.productNameSwitch = event
+          state.productSizeSwitch = event
+          state.productColorSwitch = event
+          state.GenderSwitch = event
+          state.productPriceSwitch = event
+          state.productTaxSwitch = event
+          state.editSwitch = event
+          console.log("add delete",state.addSwitch,state.deleteSwitch)
+        }
+      }
+        else if (switchVar == 'addProduct') {
+          state.addSwitch = event
+        }
+        else if (switchVar == 'deleteProduct') {
+          state.deleteSwitch = event
+        }
+        else if(switchVar== 'editProduct'){
+
+        }
+    },
+
     ADDPRODUCT: (state) => {
       state.productName = '',
         state.productSize = '',
@@ -75,9 +135,11 @@ export default new Vuex.Store<State>({
         state.radioValue = '',
         state.productPrice = '',
         state.productTax = ''
+      state.addButtonToggle = true;
+      console.log("hi")
     },
     EDITBUTTON: (state, item) => {
-      state.addButtonToggle = !state.addButtonToggle,
+      state.addButtonToggle = false,
         state.productId = item.id,
         state.productName = item.name,
         state.productSize = item.size,
@@ -179,7 +241,11 @@ export default new Vuex.Store<State>({
         price: this.state.productPrice, tax: this.state.productTax
       }
       const response = await axios.put(`http://localhost:3000/products/${this.state.productId}/`, data)
+      console.log(this.state.addButtonToggle)
       commit("ADDPRODUCT");
+    },
+    isDisabled({ commit }, { event, switchVar }) {
+      commit('isDisabled', { event, switchVar })
     }
 
   },

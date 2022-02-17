@@ -11,7 +11,7 @@
     </v-app-bar>
 
     <v-main class="mainc">
-      <navigation-drawer id="mainmenu"></navigation-drawer>
+      <navigation-drawer id="mainmenu" ></navigation-drawer>
       <v-row id="mainrow">
         <router-view />
       </v-row>

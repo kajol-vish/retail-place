@@ -11,11 +11,14 @@
             <h3 class="white--text mb-4">PERMISSION</h3>
             <ul
                 class="white--text menulist"
-                v-for="(value, key) in $store.state.permission"
-                :key="value"
+                @click="$store.state.drawer = !$store.state.drawer"
             >
-            <router-link to="/permission">
-                <li>{{ key }}</li></router-link>
+                <router-link to="/permission">
+                    <li>Permission</li>
+                </router-link>
+                <router-link to="/pointofsale">
+                    <li>Point of Sale</li>
+                </router-link>
             </ul>
         </v-card-text>
     </v-card>
@@ -27,7 +30,7 @@ import store from "@/store";
 
 @Component({
     components: {
-        
+
     },
 })
 

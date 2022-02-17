@@ -48,7 +48,7 @@
                                     >{{ key1 }}||{{ value1 }}||{{ index }}</li>-->
                                     <ul class="white--text" v-for="(item, id) in value1" :key="id">
                                         <!-- <li>{{ item.name }}</li> -->
-                                        <li v-if="item.name === 'Products'">
+                                        <li v-if="item.name === 'Products'"  @click="$store.state.drawer = !$store.state.drawer">
                                             <router-link
                                                 to="/products"
                                                 class="white--text menulist_name d-flex justify-content-left"
