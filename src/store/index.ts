@@ -15,6 +15,12 @@ export interface State {
   productTax: string;
   totalprice: number;
 
+  productCountCart: number;
+  addProductCart: any;
+  tableId: number;
+  totalTax: number;
+  totalAmount: number;
+
   search: string;
   tab: null;
   select: null;
@@ -30,6 +36,7 @@ export interface State {
   productSizeSwitch: boolean;
   productColorSwitch: boolean;
   GenderSwitch: boolean;
+  productUnit: number;
   productPriceSwitch: boolean;
   productTaxSwitch: boolean;
 
@@ -57,7 +64,14 @@ export default new Vuex.Store<State>({
     radioValue: '',
     productPrice: '',
     productTax: '',
+    productUnit: 0,
     totalprice: 0,
+
+    productCountCart: 0,
+    addProductCart: [],
+    tableId: 0,
+    totalTax: 0,
+    totalAmount: 0,
 
     deleteSwitch: true,
     addSwitch: true,
@@ -102,7 +116,7 @@ export default new Vuex.Store<State>({
           state.editSwitch = event
           state.addSwitch == event
           state.deleteSwitch == event
-          console.log("add dele",state.addSwitch,state.deleteSwitch)
+          console.log("add dele", state.addSwitch, state.deleteSwitch)
         }
         else if (event == true) {
           state.addSwitch == event
@@ -114,20 +128,29 @@ export default new Vuex.Store<State>({
           state.productPriceSwitch = event
           state.productTaxSwitch = event
           state.editSwitch = event
-          console.log("add delete",state.addSwitch,state.deleteSwitch)
+          console.log("add delete", state.addSwitch, state.deleteSwitch)
         }
       }
-        else if (switchVar == 'addProduct') {
-          state.addSwitch = event
-        }
-        else if (switchVar == 'deleteProduct') {
-          state.deleteSwitch = event
-        }
-        else if(switchVar== 'editProduct'){
-
-        }
+      else if (switchVar == 'addProduct') {
+        state.addSwitch = event
+      }
+      else if (switchVar == 'deleteProduct') {
+        state.deleteSwitch = event
+      }
     },
-
+    addToCart: (state, { product, count }) => {
+      state.totalAmount = 0;
+      state.totalTax = 0;
+      product.unit = count;
+      product.totalprice = parseFloat(product.price) * parseInt(product.unit)
+      state.addProductCart.push(product);
+      state.addProductCart.forEach((item: any) => {
+        state.totalTax = state.totalTax + parseFloat(item.tax)
+        state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
+        console.log("TotalAmount", state.totalAmount)
+      });
+      console.log(product.id)
+    },
     ADDPRODUCT: (state) => {
       state.productName = '',
         state.productSize = '',
@@ -136,7 +159,6 @@ export default new Vuex.Store<State>({
         state.productPrice = '',
         state.productTax = ''
       state.addButtonToggle = true;
-      console.log("hi")
     },
     EDITBUTTON: (state, item) => {
       state.addButtonToggle = false,
@@ -180,7 +202,7 @@ export default new Vuex.Store<State>({
     },
     HEADERS: (state, resp) => {
       state.headers = resp
-    }
+    },
   },
   actions: {
     async Inventory({ commit }) {
@@ -223,6 +245,7 @@ export default new Vuex.Store<State>({
       commit("PRODUCTS", response.data)
       const resp = await axios.get('http://localhost:3000/headers')
       commit("HEADERS", resp.data)
+      commit("productUnits")
     },
     EditProduct({ commit }, item) {
       commit("EDITBUTTON", item)
@@ -241,13 +264,14 @@ export default new Vuex.Store<State>({
         price: this.state.productPrice, tax: this.state.productTax
       }
       const response = await axios.put(`http://localhost:3000/products/${this.state.productId}/`, data)
-      console.log(this.state.addButtonToggle)
       commit("ADDPRODUCT");
     },
     isDisabled({ commit }, { event, switchVar }) {
       commit('isDisabled', { event, switchVar })
+    },
+    addToCart({ commit }, { product, count }) {
+      commit('addToCart', { product, count })
     }
-
   },
   modules: {},
 });
