@@ -149,7 +149,7 @@
       "price": "100",
       "tax": "10",
       "id": 1,
-      "units":30
+      "units": 30
     },
     {
       "name": "Dress1",
@@ -160,29 +160,7 @@
       "price": "200",
       "tax": "20",
       "id": 2,
-      "units":30
-    },
-    {
-      "name": "Shirt2",
-      "size": "30",
-      "gender": "male",
-      "color": "Red",
-      "totalprice": 240,
-      "price": "200",
-      "tax": "20",
-      "id": 3,
-      "units":30
-    },
-    {
-      "name": "Dress2",
-      "size": "30",
-      "gender": "female",
-      "color": "Red",
-      "totalprice": 390,
-      "price": "300",
-      "tax": "30",
-      "id": 4,
-      "units":30
+      "units": 30
     },
     {
       "name": "Shirt3",
@@ -193,7 +171,7 @@
       "price": "300",
       "tax": "12",
       "id": 5,
-      "units":30
+      "units": 30
     },
     {
       "name": "Dress3",
@@ -204,7 +182,7 @@
       "price": "100",
       "tax": "32",
       "id": 6,
-      "units":30
+      "units": 30
     },
     {
       "name": "Shirt4",
@@ -215,7 +193,7 @@
       "price": "200",
       "tax": "12",
       "id": 7,
-      "units":30
+      "units": 30
     }
   ]
 }

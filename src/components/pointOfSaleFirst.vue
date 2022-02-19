@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-row class="d-flex flex-row" id="rowMain" self-align>
-            <v-col v-for="(product, id) in $store.state.products" :key="id" cols="3">
+            <v-col v-for="product in $store.state.products" :key="product.name" cols="3">
                 <v-card
                     class="elevation-3 d-flex flex-column align-center justify-space-around"
                     id="taskcard"
@@ -77,8 +77,6 @@ export default class PointOfSaleFirst extends Vue {
         this.activeOverlayId = productId
     }
     addToCart(product: any, count: number) {
-        console.log("product", product)
-        console.log("count", count)
         this.dialog = false
         this.$store.dispatch('addToCart', { product, count })
         this.count = 0

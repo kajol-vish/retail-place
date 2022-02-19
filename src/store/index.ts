@@ -139,36 +139,33 @@ export default new Vuex.Store<State>({
       }
     },
     addToCart: (state, { product, count }) => {
-      let temp = state.addProductCart.includes(product.id)
-      if(temp==false){
+      let temp = state.addProductCart.filter((item: any) => {
+        return item.id === product.id
+      })
+
+      if (temp.length == 0) {
         state.totalAmount = 0;
-      state.totalTax = 0;
-      product.unit = count;
-      product.totalprice = parseFloat(product.price) * parseInt(product.unit)
-      state.addProductCart.push(product);
-      state.addProductCart.forEach((item: any) => {
-        state.totalTax = state.totalTax + parseFloat(item.tax)
-        state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
-      });
-      console.log("temp",temp)
-        console.log("ProductId",product.id)
+        state.totalTax = 0;
+        product.unit = count;
+        product.totalprice = parseFloat(product.price) * parseInt(product.unit)
+        state.addProductCart.push(product);
+        state.addProductCart.forEach((item: any) => {
+          state.totalTax = state.totalTax + parseFloat(item.tax)
+          state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
+        });
       }
-      else{
-        console.log("temp",temp)
-        console.log("ProductId",product.id)
+      else {
+        state.totalAmount = 0;
+        state.totalTax = 0;
+        state.addProductCart.forEach((item: any) => {
+          if (item.id == product.id) {
+            item.unit = item.unit + count
+            product.totalprice = parseFloat(product.price) * parseInt(product.unit)
+          }
+          state.totalTax = state.totalTax + parseFloat(item.tax)
+          state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
+        });
       }
-      
-      // state.totalAmount = 0;
-      // state.totalTax = 0;
-      // product.unit = count;
-      // product.totalprice = parseFloat(product.price) * parseInt(product.unit)
-      // state.addProductCart.push(product);
-      // state.addProductCart.forEach((item: any) => {
-      //   state.totalTax = state.totalTax + parseFloat(item.tax)
-      //   state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
-      //   console.log("TotalAmount", state.totalAmount)
-      // });
-      // console.log(product.id)
     },
     ADDPRODUCT: (state) => {
       state.productName = '',
@@ -264,7 +261,6 @@ export default new Vuex.Store<State>({
       commit("PRODUCTS", response.data)
       const resp = await axios.get('http://localhost:3000/headers')
       commit("HEADERS", resp.data)
-      commit("productUnits")
     },
     EditProduct({ commit }, item) {
       commit("EDITBUTTON", item)

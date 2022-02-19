@@ -44,11 +44,11 @@
                             >
                                 <li v-if="index === 0 || index === 1">
                                     {{ key1 }}
-                                    <!-- <li
-                                    >{{ key1 }}||{{ value1 }}||{{ index }}</li>-->
                                     <ul class="white--text" v-for="(item, id) in value1" :key="id">
-                                        <!-- <li>{{ item.name }}</li> -->
-                                        <li v-if="item.name === 'Products'"  @click="$store.state.drawer = !$store.state.drawer">
+                                        <li
+                                            v-if="item.name === 'Products'"
+                                            @click="$store.state.drawer = !$store.state.drawer"
+                                        >
                                             <router-link
                                                 to="/products"
                                                 class="white--text menulist_name d-flex justify-content-left"
@@ -90,14 +90,14 @@
                     <h3 class="white--text mb-4">MONEY</h3>
                     <ul
                         class="white--text menulist"
-                        v-for="(value, key) in $store.state.money"
-                        :key="value"
+                        v-for="(value, key, index) in $store.state.money"
+                        :key="index"
                     >
                         <li>{{ key }}</li>
                     </ul>
-                    </v-card-text>
+                </v-card-text>
             </v-card>
-            <PermissionCard/>
+            <PermissionCard />
             <!--------------------------------Money Section End--------------------------------->
             <!--------------------------------Retail Section Start ---------------------------------->
             <v-card
@@ -136,8 +136,8 @@
                     <h3 class="white--text mb-4">REPORTS</h3>
                     <ul
                         class="white--text menulist"
-                        v-for="(value, key) in $store.state.reports"
-                        :key="value"
+                        v-for="(value, key, index) in $store.state.reports"
+                        :key="index"
                     >
                         <li>{{ key }}</li>
                     </ul>
@@ -157,8 +157,8 @@
                     <h3 class="white--text mb-4">LOCATION</h3>
                     <ul
                         class="white--text menulist"
-                        v-for="(value, key) in $store.state.location"
-                        :key="value"
+                        v-for="(value, key, index) in $store.state.location"
+                        :key="index"
                     >
                         <li>{{ key }}</li>
                     </ul>
@@ -178,8 +178,9 @@
                     <h3 class="white--text mb-4">SYSTEM SETTINGS</h3>
                     <ul
                         class="white--text menulist"
-                        v-for="(value, key) in $store.state.systemsettings"
-                        :key="value"
+                        v-for="(value, key, index
+                        ) in $store.state.systemsettings"
+                        :key="index"
                     >
                         <li>{{ key }}</li>
                     </ul>
@@ -199,8 +200,8 @@
                     <h3 class="white--text mb-4">Support</h3>
                     <ul
                         class="white--text menulist"
-                        v-for="(value, key) in $store.state.support"
-                        :key="value"
+                        v-for="(value, key, index) in $store.state.support"
+                        :key="index"
                     >
                         <li>{{ key }}</li>
                     </ul>
@@ -219,7 +220,7 @@ import PermissionCard from './PermissionCard.vue'
 
 @Component({
     components: {
-PermissionCard
+        PermissionCard
     },
 })
 

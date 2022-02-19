@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="product in $store.state.addProductCart" :key="product.id">
+                        <tr v-for="(product,index) in $store.state.addProductCart" :key="index">
                             <td>{{ product.name }}</td>
                             <td>{{ product.unit }}</td>
                             <td>{{ product.price }}</td>
@@ -44,11 +44,11 @@
                 <v-row>
                     <v-col cols="12" class="d-flex flex-row text1">
                         <span >Taxes</span>
-                        <v-text>{{ $store.state.totalTax }}</v-text>
+                        <h2>{{ $store.state.totalTax }}</h2>
                     </v-col>
                     <v-col cols="12" class="d-flex flex-row text1">
                         <span>Total Price</span>
-                        <v-text>{{ $store.state.totalAmount }}</v-text>
+                        <h2>{{ $store.state.totalAmount }}</h2>
                     </v-col>
                 </v-row>
             </v-col>

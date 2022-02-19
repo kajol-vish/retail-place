@@ -43,7 +43,6 @@ export default Vue.extend({
     this.$store.dispatch('SystemSettings')
     this.$store.dispatch('Support')
     this.$store.dispatch('Products')
-    this.$store.dispatch('headers')
   },
 });
 </script>
