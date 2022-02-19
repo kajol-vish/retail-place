@@ -18,12 +18,13 @@
                     </v-btn>
                 </v-app-bar>
                 <v-divider></v-divider>
-                <v-simple-table fixed-header>
+                <v-simple-table fixed-header id="tableContainer">
                     <thead>
                         <tr>
                             <th class="text-left">Name</th>
                             <th class="text-left">Quantity</th>
-                            <th class="text-left">Price</th>
+                            <th class="text-left">Price Per Product</th>
+                            <th class="text-left">Total Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,23 +35,22 @@
                             <td>{{ product.totalprice }}</td>
                         </tr>
                     </tbody>
-                    <v-divider></v-divider>
-                    <div>
-                        <tr>
-                            <td>Taxes</td>
-                            <td></td>
-                            <td></td>
-                            <td>{{ $store.state.totalTax }}</td>
-                        </tr>
-                        <v-divider></v-divider>
-                        <tr>
-                            <td>Total Price</td>
-                            <td></td>
-                            <td></td>
-                            <td>{{ $store.state.totalAmount }}</td>
-                        </tr>
-                    </div>
                 </v-simple-table>
+                <v-divider></v-divider>
+            </v-col>
+        </v-row>
+        <v-row class="mb-0 pb-0">
+            <v-col cols="12" class="mb-0 pb-0">
+                <v-row>
+                    <v-col cols="12" class="d-flex flex-row text1">
+                        <span >Taxes</span>
+                        <v-text>{{ $store.state.totalTax }}</v-text>
+                    </v-col>
+                    <v-col cols="12" class="d-flex flex-row text1">
+                        <span>Total Price</span>
+                        <v-text>{{ $store.state.totalAmount }}</v-text>
+                    </v-col>
+                </v-row>
             </v-col>
         </v-row>
     </v-container>
@@ -74,6 +74,13 @@ export default class PointOfSaleSecond extends Vue {
 </script>
 <style scoped>
 .cardContainer {
-    height: 70vh;
+    min-height: 74vh;
+}
+#tableContainer{
+    min-height:420px;
+    overflow-y: scroll;
+}
+.text1{
+justify-content: space-between
 }
 </style>

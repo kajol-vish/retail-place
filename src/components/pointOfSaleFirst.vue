@@ -2,19 +2,20 @@
     <v-container fluid>
         <v-row class="d-flex flex-row" id="rowMain" self-align>
             <v-col v-for="(product, id) in $store.state.products" :key="id" cols="3">
-                <v-card class="elevation-3 taskcard d-flex flex-column align-center">
+                <v-card
+                    class="elevation-3 d-flex flex-column align-center justify-space-around"
+                    id="taskcard"
+                >
                     <div>
-                        <v-card-title>
-                            <h3>{{ product.name }}</h3>
-                        </v-card-title>
+                        <v-card-title class="d-flex justify-space-around">{{ product.name }}</v-card-title>
                         <v-card-text>
                             <v-icon>mdi-box</v-icon>
                             <h5>Total THC : 0</h5>
                             <h5>Total CBD : 0</h5>
                             <h3>{{ product.units }} units Available</h3>
-                            <h3>Rs.{{ product.totalprice }} per units</h3>
+                            <h3>Rs.{{ product.price }} per unit</h3>
                             <v-btn
-                                class="blue accent-4 white--text"
+                                class="blue accent-4 white--text my-4"
                                 @click="select(product.id)"
                             >Select</v-btn>
                         </v-card-text>
@@ -25,10 +26,10 @@
                             v-show="activeOverlayId === product.id"
                             class="my-3 d-flex-column justify-center"
                         >
-                            <v-card-title>
+                            <v-card-title class="d-flex justify-space-around">
                                 <h3>{{ product.name }}</h3>
                             </v-card-title>
-                            <v-card-text>
+                            <v-card-text class="mt-6">
                                 <v-icon
                                     @click="clicked(product, 'subtract')"
                                     :disabled="count == 0"
@@ -39,9 +40,8 @@
                                     :disabled="count == unit"
                                 >mdi-plus</v-icon>
                                 <br />
-                                {{ product.units }}
                                 <v-btn
-                                    class="blue accent-4 white--text mt-4"
+                                    class="blue accent-4 white--text mt-6"
                                     @click="addToCart(product, count)"
                                 >ADD TO CART</v-btn>
                             </v-card-text>
@@ -97,8 +97,8 @@ export default class PointOfSaleFirst extends Vue {
 };
 </script>
 <style scoped>
-.taskcard {
-    min-height: 200px;
+#taskcard {
+    min-height: 250px;
     overflow-y: scroll;
 }
 </style>

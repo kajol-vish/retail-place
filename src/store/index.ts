@@ -139,7 +139,9 @@ export default new Vuex.Store<State>({
       }
     },
     addToCart: (state, { product, count }) => {
-      state.totalAmount = 0;
+      let temp = state.addProductCart.includes(product.id)
+      if(temp==false){
+        state.totalAmount = 0;
       state.totalTax = 0;
       product.unit = count;
       product.totalprice = parseFloat(product.price) * parseInt(product.unit)
@@ -147,9 +149,26 @@ export default new Vuex.Store<State>({
       state.addProductCart.forEach((item: any) => {
         state.totalTax = state.totalTax + parseFloat(item.tax)
         state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
-        console.log("TotalAmount", state.totalAmount)
       });
-      console.log(product.id)
+      console.log("temp",temp)
+        console.log("ProductId",product.id)
+      }
+      else{
+        console.log("temp",temp)
+        console.log("ProductId",product.id)
+      }
+      
+      // state.totalAmount = 0;
+      // state.totalTax = 0;
+      // product.unit = count;
+      // product.totalprice = parseFloat(product.price) * parseInt(product.unit)
+      // state.addProductCart.push(product);
+      // state.addProductCart.forEach((item: any) => {
+      //   state.totalTax = state.totalTax + parseFloat(item.tax)
+      //   state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
+      //   console.log("TotalAmount", state.totalAmount)
+      // });
+      // console.log(product.id)
     },
     ADDPRODUCT: (state) => {
       state.productName = '',
