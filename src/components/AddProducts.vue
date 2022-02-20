@@ -55,8 +55,11 @@
                                 v-model="$store.state.productTax"
                                 class="mb-10"
                             ></v-text-field>
-                            <router-link to="/products" class="button" >
-                                <v-btn class="blue accent-2 white--text" @click="clearProduct">Cancel</v-btn>
+                            <router-link to="/products" class="button">
+                                <v-btn
+                                    class="blue accent-2 white--text"
+                                    @click="clearProduct"
+                                >Cancel</v-btn>
                             </router-link>
                             <router-link
                                 to="/products"
@@ -114,7 +117,7 @@ export default class AddProducts extends Vue {
     update() {
         this.$store.dispatch("UpdateProduct");
     }
-    clearProduct(){
+    clearProduct() {
         this.$store.dispatch("AddProduct")
     }
 

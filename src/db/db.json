@@ -163,17 +163,6 @@
       "units": 30
     },
     {
-      "name": "Shirt3",
-      "size": "32",
-      "gender": "male",
-      "color": "Blue",
-      "totalprice": 336,
-      "price": "300",
-      "tax": "12",
-      "id": 5,
-      "units": 30
-    },
-    {
       "name": "Dress3",
       "size": "32",
       "gender": "female",
@@ -194,6 +183,16 @@
       "tax": "12",
       "id": 7,
       "units": 30
+    },
+    {
+      "name": "Product1",
+      "size": "30",
+      "gender": "female",
+      "color": "Green",
+      "totalprice": 134.4,
+      "price": "120",
+      "tax": "12",
+      "id": 8
     }
   ]
 }

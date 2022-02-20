@@ -78,7 +78,7 @@ export default class PointOfSaleFirst extends Vue {
     }
     addToCart(product: any, count: number) {
         this.dialog = false
-        this.$store.dispatch('addToCart', { product, count })
+        this.$store.dispatch('addToCart', { product, count})
         this.count = 0
     }
     clicked(product: any, func: string) {
@@ -88,7 +88,6 @@ export default class PointOfSaleFirst extends Vue {
         }
         else if (func == 'add') {
             this.unit = product.units
-            console.log(this.unit)
             ++this.count;
         }
     }

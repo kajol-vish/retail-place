@@ -7,42 +7,69 @@
             <v-col cols="12" class="d-flex justify-center">
                 <v-card class="elevation-5" height="600" width="400">
                     <div class="px-12 py-6">
-                        <v-switch label="Products"
-                        @change="isDisabled($event, 'switchProduct')"
-                        v-model="$store.state.productSwitch"></v-switch>
+                        <v-switch
+                            label="Products"
+                            @change="isDisabled($event, 'mainProduct')"
+                            v-model="$store.state.productSwitch"
+                        ></v-switch>
                         <div class="pl-10 ml-8">
                             <v-switch
                                 label="Edit Product"
                                 class="childlevel"
                                 @change="isDisabled($event, 'editProduct')"
+                                :disabled="$store.state.productSwitch == false"
                                 v-model="$store.state.editSwitch"
                             ></v-switch>
                             <div class="childlevel pl-10 ml-8">
-                                <v-switch label="Product Name" class="subchildlevel" 
-                                v-model="$store.state.productNameSwitch">
-                                </v-switch>
-                                <v-switch label="Size" class="subchildlevel"
-                                 v-model="$store.state.productSizeSwitch">
-                                </v-switch>
-                                <v-switch label="Gender" class="subchildlevel"
-                                v-model="$store.state.GenderSwitch"></v-switch>
-                                <v-switch label="Color" class="subchildlevel"
-                                v-model="$store.state.productColorSwitch"></v-switch>
-                                <v-switch label="Price" class="subchildlevel"
-                                v-model="$store.state.productPriceSwitch"></v-switch>
-                                <v-switch label="Tax" class="subchildlevel"
-                                v-model="$store.state.productTaxSwitch"></v-switch>
+                                <v-switch
+                                    label="Product Name"
+                                    class="subchildlevel"
+                                    :disabled="$store.state.editSwitch == false"
+                                    v-model="$store.state.productNameSwitch"
+                                ></v-switch>
+                                <v-switch
+                                    label="Size"
+                                    class="subchildlevel"
+                                    :disabled="$store.state.editSwitch == false"
+                                    v-model="$store.state.productSizeSwitch"
+                                ></v-switch>
+                                <v-switch
+                                    label="Gender"
+                                    class="subchildlevel"
+                                    :disabled="$store.state.editSwitch == false"
+                                    v-model="$store.state.GenderSwitch"
+                                ></v-switch>
+                                <v-switch
+                                    label="Color"
+                                    class="subchildlevel"
+                                    :disabled="$store.state.editSwitch == false"
+                                    v-model="$store.state.productColorSwitch"
+                                ></v-switch>
+                                <v-switch
+                                    label="Price"
+                                    class="subchildlevel"
+                                    :disabled="$store.state.editSwitch == false"
+                                    v-model="$store.state.productPriceSwitch"
+                                ></v-switch>
+                                <v-switch
+                                    label="Tax"
+                                    class="subchildlevel"
+                                    :disabled="$store.state.editSwitch == false"
+                                    v-model="$store.state.productTaxSwitch"
+                                ></v-switch>
                             </div>
                             <v-switch
                                 label="Delete Product"
                                 class="childlevel"
                                 @change="isDisabled($event, 'deleteProduct')"
+                                :disabled="$store.state.productSwitch == false"
                                 v-model="$store.state.deleteSwitch"
                             ></v-switch>
                             <v-switch
                                 label="Add Product"
                                 class="childlevel"
                                 @change="isDisabled($event, 'addProduct')"
+                                :disabled="$store.state.productSwitch == false"
                                 v-model="$store.state.addSwitch"
                             ></v-switch>
                         </div>

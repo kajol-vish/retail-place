@@ -5,7 +5,7 @@ import Vuex, { Store } from "vuex";
 Vue.use(Vuex);
 
 export interface State {
-  headers: any
+  headers: any;
   products: [];
   productId: string;
   productName: string;
@@ -57,13 +57,13 @@ export default new Vuex.Store<State>({
   state: {
     headers: [],
     products: [],
-    productId: '',
-    productName: '',
-    productSize: '',
-    productColor: '',
-    radioValue: '',
-    productPrice: '',
-    productTax: '',
+    productId: "",
+    productName: "",
+    productSize: "",
+    productColor: "",
+    radioValue: "",
+    productPrice: "",
+    productTax: "",
     productUnit: 0,
     totalprice: 0,
 
@@ -84,11 +84,11 @@ export default new Vuex.Store<State>({
     productPriceSwitch: true,
     productTaxSwitch: true,
 
-    search: '',
+    search: "",
     tab: null,
     select: null,
-    options: ['28', '30', '32', '34'],
-    colors: ['Green', 'Red', 'Blue', 'Purple', 'Yellow'],
+    options: ["28", "30", "32", "34"],
+    colors: ["Green", "Red", "Blue", "Purple", "Yellow"],
 
     drawer: false,
     addButtonToggle: true,
@@ -101,192 +101,192 @@ export default new Vuex.Store<State>({
     reports: {},
     location: {},
     systemsettings: {},
-    support: {}
+    support: {},
   },
   mutations: {
     isDisabled: (state, { event, switchVar }) => {
-      if (switchVar == 'switchProduct') {
-        if (event == false) {
-          state.productNameSwitch = event
-          state.productSizeSwitch = event
-          state.productColorSwitch = event
-          state.GenderSwitch = event
-          state.productPriceSwitch = event
-          state.productTaxSwitch = event
-          state.editSwitch = event
-          state.addSwitch == event
-          state.deleteSwitch == event
-          console.log("add dele", state.addSwitch, state.deleteSwitch)
-        }
-        else if (event == true) {
-          state.addSwitch == event
-          state.deleteSwitch == event
-          state.productNameSwitch = event
-          state.productSizeSwitch = event
-          state.productColorSwitch = event
-          state.GenderSwitch = event
-          state.productPriceSwitch = event
-          state.productTaxSwitch = event
-          state.editSwitch = event
-          console.log("add delete", state.addSwitch, state.deleteSwitch)
-        }
+      if (switchVar=="mainProduct") {
+        state.productNameSwitch = event;
+        state.productSizeSwitch = event;
+        state.productColorSwitch = event;
+        state.GenderSwitch = event;
+        state.productPriceSwitch = event;
+        state.productTaxSwitch = event;
+        state.addSwitch = event;
+        state.deleteSwitch = event;
+        state.editSwitch = event;
+        state.productSwitch=event;
       }
-      else if (switchVar == 'addProduct') {
-        state.addSwitch = event
+      if (switchVar=='editProduct') {
+        state.productNameSwitch = event;
+        state.productSizeSwitch = event;
+        state.productColorSwitch = event;
+        state.GenderSwitch = event;
+        state.productPriceSwitch = event;
+        state.productTaxSwitch = event;
       }
-      else if (switchVar == 'deleteProduct') {
-        state.deleteSwitch = event
-      }
+
     },
     addToCart: (state, { product, count }) => {
       let temp = state.addProductCart.filter((item: any) => {
-        return item.id === product.id
-      })
+        return item.id === product.id;
+      });
 
       if (temp.length == 0) {
         state.totalAmount = 0;
         state.totalTax = 0;
         product.unit = count;
-        product.totalprice = parseFloat(product.price) * parseInt(product.unit)
+        product.totalprice = parseFloat(product.price) * parseInt(product.unit);
         state.addProductCart.push(product);
         state.addProductCart.forEach((item: any) => {
-          state.totalTax = state.totalTax + parseFloat(item.tax)
-          state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
+          state.totalTax = state.totalTax + parseFloat(item.tax);
+          state.totalAmount = state.totalAmount + parseFloat(item.totalprice);
         });
-      }
-      else {
+      } else {
         state.totalAmount = 0;
         state.totalTax = 0;
         state.addProductCart.forEach((item: any) => {
           if (item.id == product.id) {
-            item.unit = item.unit + count
-            product.totalprice = parseFloat(product.price) * parseInt(product.unit)
+            item.unit = item.unit + count;
+            product.totalprice =
+              parseFloat(product.price) * parseInt(product.unit);
           }
-          state.totalTax = state.totalTax + parseFloat(item.tax)
-          state.totalAmount = state.totalAmount + parseFloat(item.totalprice)
+          state.totalTax = state.totalTax + parseFloat(item.tax);
+          state.totalAmount = state.totalAmount + parseFloat(item.totalprice);
         });
       }
     },
     ADDPRODUCT: (state) => {
-      state.productName = '',
-        state.productSize = '',
-        state.productColor = '',
-        state.radioValue = '',
-        state.productPrice = '',
-        state.productTax = ''
+      (state.productName = ""),
+        (state.productSize = ""),
+        (state.productColor = ""),
+        (state.radioValue = ""),
+        (state.productPrice = ""),
+        (state.productTax = "");
       state.addButtonToggle = true;
     },
     EDITBUTTON: (state, item) => {
-      state.addButtonToggle = false,
-        state.productId = item.id,
-        state.productName = item.name,
-        state.productSize = item.size,
-        state.productColor = item.color,
-        state.radioValue = item.gender,
-        state.productPrice = item.price,
-        state.productTax = item.tax
+      (state.addButtonToggle = false),
+        (state.productId = item.id),
+        (state.productName = item.name),
+        (state.productSize = item.size),
+        (state.productColor = item.color),
+        (state.radioValue = item.gender),
+        (state.productPrice = item.price),
+        (state.productTax = item.tax);
     },
     INVENTORY: (state, response) => {
-      state.inventory = response
+      state.inventory = response;
     },
     DASHBOARD: (state, response) => {
-      state.dashboard = response
+      state.dashboard = response;
     },
     PERMISSION: (state, response) => {
-      state.permission = response
+      state.permission = response;
     },
     MONEY: (state, response) => {
-      state.money = response
+      state.money = response;
     },
     RETAIL: (state, response) => {
-      state.retail = response
+      state.retail = response;
     },
     REPORTS: (state, response) => {
-      state.reports = response
+      state.reports = response;
     },
     LOCATION: (state, response) => {
-      state.location = response
+      state.location = response;
     },
     SYSTEMSETTINGS: (state, response) => {
-      state.systemsettings = response
+      state.systemsettings = response;
     },
     SUPPORT: (state, response) => {
-      state.support = response
+      state.support = response;
     },
     PRODUCTS: (state, response) => {
-      state.products = response
+      state.products = response;
     },
     HEADERS: (state, resp) => {
-      state.headers = resp
+      state.headers = resp;
     },
   },
   actions: {
     async Inventory({ commit }) {
-      const response = await axios.get('http://localhost:3000/inventorytools');
-      commit("INVENTORY", response.data)
-      const response1 = await axios.get('http://localhost:3000/permission');
-      commit("PERMISSION", response1.data)
+      const response = await axios.get("http://localhost:3000/inventorytools");
+      commit("INVENTORY", response.data);
+      const response1 = await axios.get("http://localhost:3000/permission");
+      commit("PERMISSION", response1.data);
     },
 
     async Dashboard({ commit }) {
-      const response = await axios.get('http://localhost:3000/dashboard');
-      commit("DASHBOARD", response.data)
+      const response = await axios.get("http://localhost:3000/dashboard");
+      commit("DASHBOARD", response.data);
     },
     async Money({ commit }) {
-      const response = await axios.get('http://localhost:3000/money');
-      commit("MONEY", response.data)
+      const response = await axios.get("http://localhost:3000/money");
+      commit("MONEY", response.data);
     },
     async Retail({ commit }) {
-      const response = await axios.get('http://localhost:3000/retail');
-      commit("RETAIL", response.data)
+      const response = await axios.get("http://localhost:3000/retail");
+      commit("RETAIL", response.data);
     },
     async Reports({ commit }) {
-      const response = await axios.get('http://localhost:3000/reports');
-      commit("REPORTS", response.data)
+      const response = await axios.get("http://localhost:3000/reports");
+      commit("REPORTS", response.data);
     },
     async Location({ commit }) {
-      const response = await axios.get('http://localhost:3000/location');
-      commit("LOCATION", response.data)
+      const response = await axios.get("http://localhost:3000/location");
+      commit("LOCATION", response.data);
     },
     async SystemSettings({ commit }) {
-      const response = await axios.get('http://localhost:3000/systemsettings');
-      commit("SYSTEMSETTINGS", response.data)
+      const response = await axios.get("http://localhost:3000/systemsettings");
+      commit("SYSTEMSETTINGS", response.data);
     },
     async Support({ commit }) {
-      const response = await axios.get('http://localhost:3000/support');
-      commit("SUPPORT", response.data)
+      const response = await axios.get("http://localhost:3000/support");
+      commit("SUPPORT", response.data);
     },
     async Products({ commit }) {
-      const response = await axios.get('http://localhost:3000/products');
-      commit("PRODUCTS", response.data)
-      const resp = await axios.get('http://localhost:3000/headers')
-      commit("HEADERS", resp.data)
+      const response = await axios.get("http://localhost:3000/products");
+      commit("PRODUCTS", response.data);
+      const resp = await axios.get("http://localhost:3000/headers");
+      commit("HEADERS", resp.data);
     },
     EditProduct({ commit }, item) {
-      commit("EDITBUTTON", item)
+      commit("EDITBUTTON", item);
     },
     DeleteProduct({ commit }, item) {
-      commit("DELETEBUTTON", item)
+      commit("DELETEBUTTON", item);
     },
     AddProduct({ commit }) {
-      commit("ADDPRODUCT")
+      commit("ADDPRODUCT");
     },
     async UpdateProduct({ commit }) {
-      this.state.totalprice = parseInt(this.state.productPrice) + (parseInt(this.state.productPrice) * (parseInt(this.state.productTax) / 100))
+      this.state.totalprice =
+        parseInt(this.state.productPrice) +
+        parseInt(this.state.productPrice) *
+          (parseInt(this.state.productTax) / 100);
       const data = {
-        id: this.state.productId, name: this.state.productName, size: this.state.productSize,
-        gender: this.state.radioValue, color: this.state.productColor, totalprice: this.state.totalprice,
-        price: this.state.productPrice, tax: this.state.productTax
-      }
-      const response = await axios.put(`http://localhost:3000/products/${this.state.productId}/`, data)
+        id: this.state.productId,
+        name: this.state.productName,
+        size: this.state.productSize,
+        gender: this.state.radioValue,
+        color: this.state.productColor,
+        totalprice: this.state.totalprice,
+        price: this.state.productPrice,
+        tax: this.state.productTax,
+      };
+      const response = await axios.put(
+        `http://localhost:3000/products/${this.state.productId}/`,
+        data
+      );
       commit("ADDPRODUCT");
     },
     isDisabled({ commit }, { event, switchVar }) {
-      commit('isDisabled', { event, switchVar })
+      commit("isDisabled", { event, switchVar });
     },
     addToCart({ commit }, { product, count }) {
-      commit('addToCart', { product, count })
-    }
+      commit("addToCart", { product, count });
+    },
   },
   modules: {},
 });
