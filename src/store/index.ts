@@ -125,10 +125,32 @@ export default new Vuex.Store<State>({
         state.productPriceSwitch = event;
         state.productTaxSwitch = event;
       }
+      if (switchVar=='NameField') {
+        state.productNameSwitch = event;
+      }
+      if (switchVar=='sizeField') {
+        state.productSizeSwitch = event;
+      }
+      if (switchVar=='colorField') {
+        state.productColorSwitch = event;
+      }
+      if (switchVar=='genderField') {
+        state.GenderSwitch = event;
+      }
+      if (switchVar=='priceField') {
+        state.productPriceSwitch = event;
+      }
+      if (switchVar=='taxField') {
+        state.productTaxSwitch = event;
+      }
 
     },
+    getCartData:(state,payload)=>{
+      state.addProductCart=payload
+      console.log(payload)
+    },
     addToCart: (state, { product, count }) => {
-      let temp = state.addProductCart.filter((item: any) => {
+      const temp = state.addProductCart.filter((item: any) => {
         return item.id === product.id;
       });
 
@@ -286,6 +308,9 @@ export default new Vuex.Store<State>({
     },
     addToCart({ commit }, { product, count }) {
       commit("addToCart", { product, count });
+    },
+    getCartData({ commit }, payload) {
+      commit("getCartData", payload);
     },
   },
   modules: {},

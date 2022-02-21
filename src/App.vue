@@ -12,7 +12,7 @@
 
     <v-main class="mainc">
       <navigation-drawer id="mainmenu" ></navigation-drawer>
-      <v-row id="mainrow">
+      <v-row id="mainrow" v-show="!$store.state.drawer">
         <router-view />
       </v-row>
     </v-main>

@@ -11,7 +11,6 @@
             <h3 class="white--text mb-4">PERMISSION</h3>
             <ul
                 class="white--text menulist"
-                @click="$store.state.drawer = !$store.state.drawer"
             >
                 <router-link to="/permission">
                     <li>Permission</li>
@@ -34,7 +33,7 @@ import store from "@/store";
     },
 })
 
-export default class Products extends Vue {
+export default class PermissionCard extends Vue {
 }
 </script>
 <style scoped>

@@ -27,8 +27,8 @@
                   :disabled="!$store.state.editSwitch"
                 >
                   <v-icon small class="mr-2" @click="editProduct(item)">
-                    mdi-pencil </v-icon
-                  >1
+                    mdi-pencil
+                  </v-icon>
                 </router-link>
                 <router-link to="/addproducts" v-else>
                   <v-icon small class="mr-2" @click="editProduct(item)">

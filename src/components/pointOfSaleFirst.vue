@@ -12,7 +12,7 @@
                             <v-icon>mdi-box</v-icon>
                             <h5>Total THC : 0</h5>
                             <h5>Total CBD : 0</h5>
-                            <h3>{{ product.units }} units Available</h3>
+                            <!-- <h3>{{ product.units }} units Available</h3> -->
                             <h3>Rs.{{ product.price }} per unit</h3>
                             <v-btn
                                 class="blue accent-4 white--text my-4"
@@ -96,6 +96,29 @@ export default class PointOfSaleFirst extends Vue {
 <style scoped>
 #taskcard {
     min-height: 250px;
+}
+#rowMain{
+        height: 75vh;
     overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #448aff;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #448aff;
 }
 </style>

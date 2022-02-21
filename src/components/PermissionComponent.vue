@@ -25,36 +25,42 @@
                                     label="Product Name"
                                     class="subchildlevel"
                                     :disabled="$store.state.editSwitch == false"
+                                    @change="isDisabled($event, 'NameField')"
                                     v-model="$store.state.productNameSwitch"
                                 ></v-switch>
                                 <v-switch
                                     label="Size"
                                     class="subchildlevel"
                                     :disabled="$store.state.editSwitch == false"
+                                    @change="isDisabled($event, 'sizeField')"
                                     v-model="$store.state.productSizeSwitch"
                                 ></v-switch>
                                 <v-switch
                                     label="Gender"
                                     class="subchildlevel"
                                     :disabled="$store.state.editSwitch == false"
+                                    @change="isDisabled($event, 'genderField')"
                                     v-model="$store.state.GenderSwitch"
                                 ></v-switch>
                                 <v-switch
                                     label="Color"
                                     class="subchildlevel"
                                     :disabled="$store.state.editSwitch == false"
+                                     @change="isDisabled($event, 'colorField')"
                                     v-model="$store.state.productColorSwitch"
                                 ></v-switch>
                                 <v-switch
                                     label="Price"
                                     class="subchildlevel"
                                     :disabled="$store.state.editSwitch == false"
+                                    @change="isDisabled($event, 'priceField')"
                                     v-model="$store.state.productPriceSwitch"
                                 ></v-switch>
                                 <v-switch
                                     label="Tax"
                                     class="subchildlevel"
                                     :disabled="$store.state.editSwitch == false"
+                                    @change="isDisabled($event, 'taxField')"
                                     v-model="$store.state.productTaxSwitch"
                                 ></v-switch>
                             </div>
@@ -98,9 +104,6 @@ import axios from 'axios';
 export default class PermissionComponent extends Vue {
 
     isDisabled(event: Event, switchVar: string) {
-        //     if(switchVar=='addProduct'){
-        // this.$store.state.addSwitch=event
-        //     }
         console.log(event, switchVar)
         this.$store.dispatch('isDisabled', { event, switchVar })
     }

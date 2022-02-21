@@ -5,6 +5,7 @@ import Products from "../components/Products.vue"
 import AddProducts from "../components/AddProducts.vue"
 import PermissionComponent from '../components/PermissionComponent.vue'
 import PointOfSale from '../components/PointOfSale.vue'
+import reportToolComponent from '../components/reportToolComponent.vue'
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ const routes: Array<RouteConfig> = [
     path:"/pointofsale",
     name:"Point Of Sale",
     component:PointOfSale
+  },
+  {
+    path:"/report-tool",
+    name:"Report Tool",
+    component:reportToolComponent
   }
 ];
 

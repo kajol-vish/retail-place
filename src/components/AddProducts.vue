@@ -17,6 +17,7 @@
                                 label="Product Name"
                                 mandatory
                                 v-model="$store.state.productName"
+                                :disabled="!$store.state.productNameSwitch"
                             ></v-text-field>
                             <v-select
                                 label="Size"
@@ -24,11 +25,17 @@
                                 :items="$store.state.options"
                                 v-model="$store.state.productSize"
                                 :value="$store.state.options"
+                                :disabled="!$store.state.productSizeSwitch"
                             ></v-select>
                             <v-label class="ml-0 pl-0">
                                 <span>Please Select a Gender</span>
                             </v-label>
-                            <v-radio-group v-model="$store.state.radioValue" mandatory row>
+                            <v-radio-group
+                                v-model="$store.state.radioValue"
+                                mandatory
+                                row
+                                :disabled="!$store.state.GenderSwitch"
+                            >
                                 <v-radio label="Male" value="male"></v-radio>
                                 <v-radio label="Female" value="female"></v-radio>
                             </v-radio-group>
@@ -37,6 +44,7 @@
                                 required
                                 :items="$store.state.colors"
                                 v-model="$store.state.productColor"
+                                :disabled="!$store.state.productColorSwitch"
                             ></v-select>
                         </v-tab-item>
                         <v-tab-item
@@ -48,11 +56,13 @@
                                 required
                                 class="pt-10"
                                 v-model="$store.state.productPrice"
+                                :disabled="!$store.state.productPriceSwitch"
                             ></v-text-field>
                             <v-text-field
                                 label="Tax"
                                 required
                                 v-model="$store.state.productTax"
+                                :disabled="!$store.state.productTaxSwitch"
                                 class="mb-10"
                             ></v-text-field>
                             <router-link to="/products" class="button">
