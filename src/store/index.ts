@@ -40,6 +40,10 @@ export interface State {
   productPriceSwitch: boolean;
   productTaxSwitch: boolean;
 
+  timestamp: any;
+  dateTime: any;
+  submitCart: any[];
+
   addButtonToggle: boolean;
   drawer: boolean;
   inventory: any;
@@ -69,6 +73,9 @@ export default new Vuex.Store<State>({
 
     productCountCart: 0,
     addProductCart: [],
+    submitCart: [],
+    timestamp: null,
+    dateTime: null,
     tableId: 0,
     totalTax: 0,
     totalAmount: 0,
@@ -105,7 +112,7 @@ export default new Vuex.Store<State>({
   },
   mutations: {
     isDisabled: (state, { event, switchVar }) => {
-      if (switchVar=="mainProduct") {
+      if (switchVar == "mainProduct") {
         state.productNameSwitch = event;
         state.productSizeSwitch = event;
         state.productColorSwitch = event;
@@ -115,9 +122,9 @@ export default new Vuex.Store<State>({
         state.addSwitch = event;
         state.deleteSwitch = event;
         state.editSwitch = event;
-        state.productSwitch=event;
+        state.productSwitch = event;
       }
-      if (switchVar=='editProduct') {
+      if (switchVar == "editProduct") {
         state.productNameSwitch = event;
         state.productSizeSwitch = event;
         state.productColorSwitch = event;
@@ -125,29 +132,29 @@ export default new Vuex.Store<State>({
         state.productPriceSwitch = event;
         state.productTaxSwitch = event;
       }
-      if (switchVar=='NameField') {
+      if (switchVar == "NameField") {
         state.productNameSwitch = event;
       }
-      if (switchVar=='sizeField') {
+      if (switchVar == "sizeField") {
         state.productSizeSwitch = event;
       }
-      if (switchVar=='colorField') {
+      if (switchVar == "colorField") {
         state.productColorSwitch = event;
       }
-      if (switchVar=='genderField') {
+      if (switchVar == "genderField") {
         state.GenderSwitch = event;
       }
-      if (switchVar=='priceField') {
+      if (switchVar == "priceField") {
         state.productPriceSwitch = event;
       }
-      if (switchVar=='taxField') {
+      if (switchVar == "taxField") {
         state.productTaxSwitch = event;
       }
-
     },
-    getCartData:(state,payload)=>{
-      state.addProductCart=payload
-      console.log(payload)
+    getCartData: (state, payload) => {
+      state.submitCart=[]
+      state.submitCart.push(payload);
+      console.log(state.submitCart, "state");
     },
     addToCart: (state, { product, count }) => {
       const temp = state.addProductCart.filter((item: any) => {
@@ -309,8 +316,10 @@ export default new Vuex.Store<State>({
     addToCart({ commit }, { product, count }) {
       commit("addToCart", { product, count });
     },
-    getCartData({ commit }, payload) {
-      commit("getCartData", payload);
+    async getCartData({ commit }): Promise<void> {
+      const resp = await axios.get("http://localhost:3000/cartProduct");
+      console.log("Action", resp.data);
+      commit("getCartData", resp.data);
     },
   },
   modules: {},

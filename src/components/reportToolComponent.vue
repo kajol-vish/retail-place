@@ -27,7 +27,7 @@
           </v-row>
           <div>
             <v-row
-              v-for="(product, index) in $store.state.addProductCart"
+              v-for="(product, index) in $store.state.submitCart[0]"
               :key="index"
               class="table-data"
             >
@@ -62,6 +62,12 @@ import axios from "axios";
 @Component({})
 export default class reportToolComponent extends Vue {
   serial = 0;
+   beforeCreate() {
+    this.$store.dispatch('getCartData')
+   }
+  created(){
+this.$store.dispatch('getCartData')
+  }
 }
 </script>
 <style scoped>

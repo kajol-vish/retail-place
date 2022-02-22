@@ -236,6 +236,46 @@
     }
   ],
   "cartProduct": [
-    {}
+    {
+      "name": "Dress1",
+      "size": "28",
+      "gender": "female",
+      "color": "Green",
+      "totalprice": 200,
+      "price": "200",
+      "tax": "20",
+      "id": 2,
+      "units": 30,
+      "unit": 1,
+      "timestamp": 1645518958656,
+      "dateTime": "22-2-2022 14:5:58"
+    },
+    {
+      "name": "Dress3",
+      "size": "32",
+      "gender": "female",
+      "color": "Blue",
+      "totalprice": 100,
+      "price": "100",
+      "tax": "32",
+      "id": 6,
+      "units": 30,
+      "unit": 1,
+      "timestamp": 1645518958661,
+      "dateTime": "22-2-2022 14:5:58"
+    },
+    {
+      "name": "Pant3",
+      "size": "30",
+      "gender": "female",
+      "color": "Red",
+      "totalprice": 300,
+      "price": "300",
+      "tax": "4",
+      "id": 11,
+      "unit": 1,
+      "timestamp": 1645519039674,
+      "dateTime": "22-2-2022 14:7:19"
+    }
   ]
 }
