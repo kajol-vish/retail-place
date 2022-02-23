@@ -12,11 +12,8 @@
             <ul
                 class="white--text menulist"
             >
-                <router-link to="/permission">
+                <router-link to="/permission" class="white--text text-decoration-none">
                     <li>Permission</li>
-                </router-link>
-                <router-link to="/pointofsale">
-                    <li>Point of Sale</li>
                 </router-link>
             </ul>
         </v-card-text>
@@ -25,7 +22,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import store from "@/store";
 
 @Component({
     components: {

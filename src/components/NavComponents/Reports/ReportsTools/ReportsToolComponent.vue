@@ -24,6 +24,12 @@
             <v-col class="flex-container d-flex flex-row">
               <h4 class="cell">Total Price</h4>
             </v-col>
+            <v-col class="flex-container d-flex flex-row">
+              <h4 class="cell">Date & Time</h4>
+            </v-col>
+            <v-col class="flex-container d-flex flex-row">
+              <h4 class="cell">TimeStamp</h4>
+            </v-col>
           </v-row>
           <div>
             <v-row
@@ -46,6 +52,12 @@
               <v-col class="flex-container d-flex flex-row">
                 <h5 class="cell">{{ product.totalprice }}</h5>
               </v-col>
+              <v-col class="flex-container d-flex flex-row">
+                <h5 class="cell">{{ product.timestamp }}</h5>
+              </v-col>
+              <v-col class="flex-container d-flex flex-row">
+                <h5 class="cell">{{ product.dateTime }}</h5>
+              </v-col>
             </v-row>
           </div>
         </div>
@@ -60,13 +72,10 @@ import store from "@/store";
 import axios from "axios";
 
 @Component({})
-export default class reportToolComponent extends Vue {
+export default class ReportsToolComponent extends Vue {
   serial = 0;
-   beforeCreate() {
-    this.$store.dispatch('getCartData')
-   }
   created(){
-this.$store.dispatch('getCartData')
+    this.$store.dispatch('getCartData')
   }
 }
 </script>

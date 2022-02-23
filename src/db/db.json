@@ -235,6 +235,7 @@
       "id": 12
     }
   ],
+  "cartData": [],
   "cartProduct": [
     {
       "name": "Dress1",
@@ -247,22 +248,21 @@
       "id": 2,
       "units": 30,
       "unit": 1,
-      "timestamp": 1645518958656,
-      "dateTime": "22-2-2022 14:5:58"
+      "timestamp": 1645548410684,
+      "dateTime": "22-2-2022 22:16:50"
     },
     {
-      "name": "Dress3",
+      "name": "Pant2",
       "size": "32",
       "gender": "female",
       "color": "Blue",
-      "totalprice": 100,
-      "price": "100",
-      "tax": "32",
-      "id": 6,
-      "units": 30,
+      "totalprice": 150,
+      "price": "150",
+      "tax": "5",
+      "id": 10,
       "unit": 1,
-      "timestamp": 1645518958661,
-      "dateTime": "22-2-2022 14:5:58"
+      "timestamp": 1645548410688,
+      "dateTime": "22-2-2022 22:16:50"
     },
     {
       "name": "Pant3",
@@ -274,8 +274,35 @@
       "tax": "4",
       "id": 11,
       "unit": 1,
-      "timestamp": 1645519039674,
-      "dateTime": "22-2-2022 14:7:19"
+      "timestamp": 1645548410690,
+      "dateTime": "22-2-2022 22:16:50"
+    },
+    {
+      "name": "Shirt4",
+      "size": "34",
+      "gender": "male",
+      "color": "Purple",
+      "totalprice": 400,
+      "price": "200",
+      "tax": "12",
+      "id": 7,
+      "units": 30,
+      "unit": 2,
+      "timestamp": 1645548635123,
+      "dateTime": "22-2-2022 22:20:35"
+    },
+    {
+      "name": "Product1",
+      "size": "30",
+      "gender": "female",
+      "color": "Green",
+      "totalprice": 120,
+      "price": "120",
+      "tax": "12",
+      "id": 8,
+      "unit": 1,
+      "timestamp": 1645594917870,
+      "dateTime": "23-2-2022 11:11:57"
     }
   ]
 }

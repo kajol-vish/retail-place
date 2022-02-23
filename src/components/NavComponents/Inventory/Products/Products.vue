@@ -30,7 +30,7 @@
                     mdi-pencil
                   </v-icon>
                 </router-link>
-                <router-link to="/addproducts" v-else>
+                <router-link to="/add-products" v-else>
                   <v-icon small class="mr-2" @click="editProduct(item)">
                     mdi-pencil
                   </v-icon>
@@ -49,7 +49,7 @@
               @click="addproduct"
               v-bind:disabled="!$store.state.addSwitch"
               ><router-link
-                to="/addproducts"
+                to="/add-products"
                 class="text-decoration-none white--text"
                 >Add Product
               </router-link>
@@ -70,16 +70,11 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import AddProductPrice from "./AddProductPrice.vue";
-import AddProductForm from "./AddProductForm.vue";
 import store from "@/store";
 import axios from "axios";
 
 @Component({
-  components: {
-    AddProductPrice,
-    AddProductForm,
-  },
+  components: {},
 })
 export default class Products extends Vue {
   editProduct(item: any) {

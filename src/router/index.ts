@@ -1,38 +1,23 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
-import Products from "../components/Products.vue"
-import AddProducts from "../components/AddProducts.vue"
-import PermissionComponent from '../components/PermissionComponent.vue'
-import PointOfSale from '../components/PointOfSale.vue'
-import reportToolComponent from '../components/reportToolComponent.vue'
+import Products from "../components/NavComponents/Inventory/Products/Products.vue"
+import AddProductComponent from "../components/NavComponents/Inventory/Products/ProductForm/AddProductComponent.vue"
+import PermissionComponent from '../components/NavComponents/Permission/PermissionComponent/PermissionComponent.vue'
+import PosComponent from '../components/NavComponents/Retail/PointOfSale/PosComponent.vue'
+import ReportsToolComponent from '../components/NavComponents/Reports/ReportsTools/ReportsToolComponent.vue'
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
   {
     path:"/products",
     name:"Products",
     component:Products
   },
   {
-    path:"/addproducts",
+    path:"/add-products",
     name:"AddProducts",
-    component:AddProducts
+    component:AddProductComponent
   },
   {
     path:"/permission",
@@ -42,12 +27,12 @@ const routes: Array<RouteConfig> = [
   {
     path:"/pointofsale",
     name:"Point Of Sale",
-    component:PointOfSale
+    component:PosComponent
   },
   {
     path:"/report-tool",
     name:"Report Tool",
-    component:reportToolComponent
+    component:ReportsToolComponent
   }
 ];
 

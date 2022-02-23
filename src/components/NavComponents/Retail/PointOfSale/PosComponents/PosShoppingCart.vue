@@ -37,9 +37,6 @@
               <td>{{ product.price }}</td>
               <td>{{ product.totalprice }}</td>
             </tr>
-            {{
-              $store.state.addProductCart.id
-            }}
           </tbody>
         </v-simple-table>
         <v-divider></v-divider>
@@ -71,16 +68,14 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import store from "@/store";
 import axios from "axios";
 
 @Component({
   components: {},
 })
-export default class PointOfSaleSecond extends Vue {
+export default class PosShoppingCart extends Vue {
   async submitCartData() {
     await this.$store.state.addProductCart.forEach((item: any,index:number) => {
-    console.log(index,"eind",this.$store.state.addProductCart.length)
       const current = new Date();
       const date =
         current.getDate() +
@@ -98,14 +93,14 @@ export default class PointOfSaleSecond extends Vue {
       item["timestamp"] = Date.now();
       item["dateTime"] = dateTime;
       const response =axios.post("http://localhost:3000/cartProduct", item);
-      if(index+1===this.$store.state.addProductCart.length){
-          this.getData();
-      }
+    //   if(index+1===this.$store.state.addProductCart.length){
+    //       this.getData();
+    //   }
     });
   }
-  getData(){
-      this.$store.dispatch('getCartData')
-  }
+//   getData(){
+//       this.$store.dispatch('getCartData')
+//   }
 }
 </script>
 <style scoped>

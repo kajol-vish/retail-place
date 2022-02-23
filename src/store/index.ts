@@ -5,7 +5,7 @@ import Vuex, { Store } from "vuex";
 Vue.use(Vuex);
 
 export interface State {
-  headers: any;
+  headers: [];
   products: [];
   productId: string;
   productName: string;
@@ -153,8 +153,9 @@ export default new Vuex.Store<State>({
     },
     getCartData: (state, payload) => {
       state.submitCart=[]
+      console.log(payload,"payload")
       state.submitCart.push(payload);
-      console.log(state.submitCart, "state");
+
     },
     addToCart: (state, { product, count }) => {
       const temp = state.addProductCart.filter((item: any) => {

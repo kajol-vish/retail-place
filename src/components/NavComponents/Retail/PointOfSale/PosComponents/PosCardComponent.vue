@@ -55,8 +55,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import store from "@/store";
-import axios from 'axios';
 
 @Component({
     components: {
@@ -64,7 +62,7 @@ import axios from 'axios';
     },
 })
 
-export default class PointOfSaleFirst extends Vue {
+export default class PosCardComponent extends Vue {
     absolute = true
     unit = null
     opacity = 0.85
