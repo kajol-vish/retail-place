@@ -4,7 +4,7 @@ import Vuex, { Store } from "vuex";
 
 Vue.use(Vuex);
 
-export interface State {
+export interface stateData {
   headers: [];
   products: [];
   productId: string;
@@ -36,9 +36,9 @@ export interface State {
   productSizeSwitch: boolean;
   productColorSwitch: boolean;
   GenderSwitch: boolean;
-  productUnit: number;
   productPriceSwitch: boolean;
   productTaxSwitch: boolean;
+  productUnit: number;
 
   timestamp: any;
   dateTime: any;
@@ -46,18 +46,18 @@ export interface State {
 
   addButtonToggle: boolean;
   drawer: boolean;
-  inventory: any;
-  dashboard: any;
-  permission: any;
-  money: any;
-  retail: any;
-  reports: any;
-  location: any;
-  systemsettings: any;
-  support: any;
+  inventory: {};
+  dashboard: {};
+  permission: {};
+  money: {};
+  retail: {};
+  reports: {};
+  location: {};
+  systemsettings: {};
+  support: {};
 }
 
-export default new Vuex.Store<State>({
+export default new Vuex.Store<stateData>({
   state: {
     headers: [],
     products: [],
@@ -153,11 +153,9 @@ export default new Vuex.Store<State>({
     },
     getCartData: (state, payload) => {
       state.submitCart=[]
-      console.log(payload,"payload")
       state.submitCart.push(payload);
-
     },
-    addToCart: (state, { product, count }) => {
+    addToCart: (state, { product, quantity }) => {
       const temp = state.addProductCart.filter((item: any) => {
         return item.id === product.id;
       });
@@ -165,9 +163,10 @@ export default new Vuex.Store<State>({
       if (temp.length == 0) {
         state.totalAmount = 0;
         state.totalTax = 0;
-        product.unit = count;
+        product.unit = quantity;
         product.totalprice = parseFloat(product.price) * parseInt(product.unit);
         state.addProductCart.push(product);
+        console.log(state.addProductCart,"state")
         state.addProductCart.forEach((item: any) => {
           state.totalTax = state.totalTax + parseFloat(item.tax);
           state.totalAmount = state.totalAmount + parseFloat(item.totalprice);
@@ -177,16 +176,16 @@ export default new Vuex.Store<State>({
         state.totalTax = 0;
         state.addProductCart.forEach((item: any) => {
           if (item.id == product.id) {
-            item.unit = item.unit + count;
+            item.unit = item.unit + quantity;
             product.totalprice =
               parseFloat(product.price) * parseInt(product.unit);
-          }
+          }          
           state.totalTax = state.totalTax + parseFloat(item.tax);
           state.totalAmount = state.totalAmount + parseFloat(item.totalprice);
         });
       }
     },
-    ADDPRODUCT: (state) => {
+    AddProduct: (state) => {
       (state.productName = ""),
         (state.productSize = ""),
         (state.productColor = ""),
@@ -195,7 +194,7 @@ export default new Vuex.Store<State>({
         (state.productTax = "");
       state.addButtonToggle = true;
     },
-    EDITBUTTON: (state, item) => {
+    EditButton: (state, item) => {
       (state.addButtonToggle = false),
         (state.productId = item.id),
         (state.productName = item.name),
@@ -205,90 +204,90 @@ export default new Vuex.Store<State>({
         (state.productPrice = item.price),
         (state.productTax = item.tax);
     },
-    INVENTORY: (state, response) => {
+    Inventory: (state, response) => {
       state.inventory = response;
     },
-    DASHBOARD: (state, response) => {
+    Dashboard: (state, response) => {
       state.dashboard = response;
     },
-    PERMISSION: (state, response) => {
+    Permission: (state, response) => {
       state.permission = response;
     },
-    MONEY: (state, response) => {
+    Money: (state, response) => {
       state.money = response;
     },
-    RETAIL: (state, response) => {
+    Retail: (state, response) => {
       state.retail = response;
     },
-    REPORTS: (state, response) => {
+    Reports: (state, response) => {
       state.reports = response;
     },
-    LOCATION: (state, response) => {
+    Location: (state, response) => {
       state.location = response;
     },
-    SYSTEMSETTINGS: (state, response) => {
+    SystemSettings: (state, response) => {
       state.systemsettings = response;
     },
-    SUPPORT: (state, response) => {
+    Support: (state, response) => {
       state.support = response;
     },
-    PRODUCTS: (state, response) => {
+    Products: (state, response) => {
       state.products = response;
     },
-    HEADERS: (state, resp) => {
+    Headers: (state, resp) => {
       state.headers = resp;
     },
   },
   actions: {
     async Inventory({ commit }) {
       const response = await axios.get("http://localhost:3000/inventorytools");
-      commit("INVENTORY", response.data);
+      commit("Inventory", response.data);
       const response1 = await axios.get("http://localhost:3000/permission");
-      commit("PERMISSION", response1.data);
+      commit("Permission", response1.data);
     },
 
     async Dashboard({ commit }) {
       const response = await axios.get("http://localhost:3000/dashboard");
-      commit("DASHBOARD", response.data);
+      commit("Dashboard", response.data);
     },
     async Money({ commit }) {
       const response = await axios.get("http://localhost:3000/money");
-      commit("MONEY", response.data);
+      commit("Money", response.data);
     },
     async Retail({ commit }) {
       const response = await axios.get("http://localhost:3000/retail");
-      commit("RETAIL", response.data);
+      commit("Retail", response.data);
     },
     async Reports({ commit }) {
       const response = await axios.get("http://localhost:3000/reports");
-      commit("REPORTS", response.data);
+      commit("Reports", response.data);
     },
     async Location({ commit }) {
       const response = await axios.get("http://localhost:3000/location");
-      commit("LOCATION", response.data);
+      commit("Location", response.data);
     },
     async SystemSettings({ commit }) {
       const response = await axios.get("http://localhost:3000/systemsettings");
-      commit("SYSTEMSETTINGS", response.data);
+      commit("SystemSettings", response.data);
     },
     async Support({ commit }) {
       const response = await axios.get("http://localhost:3000/support");
-      commit("SUPPORT", response.data);
+      commit("Support", response.data);
     },
     async Products({ commit }) {
       const response = await axios.get("http://localhost:3000/products");
-      commit("PRODUCTS", response.data);
+      commit("Products", response.data);
       const resp = await axios.get("http://localhost:3000/headers");
-      commit("HEADERS", resp.data);
+      commit("Headers", resp.data);
     },
     EditProduct({ commit }, item) {
-      commit("EDITBUTTON", item);
+      commit("EditButton", item);
     },
     DeleteProduct({ commit }, item) {
-      commit("DELETEBUTTON", item);
+      commit("DeleteProduct", item);
     },
     AddProduct({ commit }) {
-      commit("ADDPRODUCT");
+      commit("AddProduct");
     },
     async UpdateProduct({ commit }) {
       this.state.totalprice =
@@ -309,7 +308,7 @@ export default new Vuex.Store<State>({
         `http://localhost:3000/products/${this.state.productId}/`,
         data
       );
-      commit("ADDPRODUCT");
+      commit("AddProduct");
     },
     isDisabled({ commit }, { event, switchVar }) {
       commit("isDisabled", { event, switchVar });

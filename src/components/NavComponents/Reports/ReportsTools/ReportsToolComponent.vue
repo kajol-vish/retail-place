@@ -74,7 +74,7 @@ import axios from "axios";
 @Component({})
 export default class ReportsToolComponent extends Vue {
   serial = 0;
-  created(){
+mounted(){
     this.$store.dispatch('getCartData')
   }
 }
