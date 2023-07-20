@@ -1,6 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/ban-types
 import axios from "axios";
 import Vue from "vue";
-import Vuex, { Store } from "vuex";
+import Vuex from "vuex";
 
 Vue.use(Vuex);
 
@@ -152,7 +153,7 @@ export default new Vuex.Store<stateData>({
       }
     },
     getCartData: (state, payload) => {
-      state.submitCart=[]
+      state.submitCart = [];
       state.submitCart.push(payload);
     },
     addToCart: (state, { product, quantity }) => {
@@ -166,7 +167,6 @@ export default new Vuex.Store<stateData>({
         product.unit = quantity;
         product.totalprice = parseFloat(product.price) * parseInt(product.unit);
         state.addProductCart.push(product);
-        console.log(state.addProductCart,"state")
         state.addProductCart.forEach((item: any) => {
           state.totalTax = state.totalTax + parseFloat(item.tax);
           state.totalAmount = state.totalAmount + parseFloat(item.totalprice);
@@ -179,7 +179,7 @@ export default new Vuex.Store<stateData>({
             item.unit = item.unit + quantity;
             product.totalprice =
               parseFloat(product.price) * parseInt(product.unit);
-          }          
+          }
           state.totalTax = state.totalTax + parseFloat(item.tax);
           state.totalAmount = state.totalAmount + parseFloat(item.totalprice);
         });
@@ -308,6 +308,7 @@ export default new Vuex.Store<stateData>({
         `http://localhost:3000/products/${this.state.productId}/`,
         data
       );
+      console.log(response);
       commit("AddProduct");
     },
     isDisabled({ commit }, { event, switchVar }) {

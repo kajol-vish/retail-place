@@ -75,32 +75,34 @@ import axios from "axios";
 })
 export default class PosShoppingCart extends Vue {
   async submitCartData() {
-    await this.$store.state.addProductCart.forEach((item: any,index:number) => {
-      const current = new Date();
-      const date =
-        current.getDate() +
-        "-" +
-        (current.getMonth() + 1) +
-        "-" +
-        current.getFullYear();
-      const time =
-        current.getHours() +
-        ":" +
-        current.getMinutes() +
-        ":" +
-        current.getSeconds();
-      const dateTime = date + " " + time;
-      item["timestamp"] = Date.now();
-      item["dateTime"] = dateTime;
-      const response =axios.post("http://localhost:3000/cartProduct", item);
-    //   if(index+1===this.$store.state.addProductCart.length){
-    //       this.getData();
-    //   }
-    });
+    await this.$store.state.addProductCart.forEach(
+      (item: any, index: number) => {
+        const current = new Date();
+        const date =
+          current.getDate() +
+          "-" +
+          (current.getMonth() + 1) +
+          "-" +
+          current.getFullYear();
+        const time =
+          current.getHours() +
+          ":" +
+          current.getMinutes() +
+          ":" +
+          current.getSeconds();
+        const dateTime = date + " " + time;
+        item["timestamp"] = Date.now();
+        item["dateTime"] = dateTime;
+        const response = axios.post("http://localhost:3000/cartProduct", item);
+        //   if(index+1===this.$store.state.addProductCart.length){
+        //       this.getData();
+        //   }
+      }
+    );
   }
-//   getData(){
-//       this.$store.dispatch('getCartData')
-//   }
+  //   getData(){
+  //       this.$store.dispatch('getCartData')
+  //   }
 }
 </script>
 <style scoped>

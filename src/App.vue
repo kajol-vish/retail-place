@@ -7,11 +7,13 @@
         </v-btn>
       </div>
       <v-spacer></v-spacer>
-      <v-app-bar-nav-icon @click="$store.state.drawer = !$store.state.drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        @click="$store.state.drawer = !$store.state.drawer"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-main class="mainc">
-      <navigation-drawer id="mainmenu" ></navigation-drawer>
+      <navigation-drawer id="mainmenu"></navigation-drawer>
       <v-row id="mainrow" v-show="!$store.state.drawer">
         <router-view />
       </v-row>
@@ -21,32 +23,27 @@
 <script lang="ts">
 import Vue from "vue";
 import NavigationDrawer from "./components/NavigationDrawer.vue";
-import store from "./store";
-
 
 export default Vue.extend({
   name: "App",
   components: {
-    NavigationDrawer
+    NavigationDrawer,
   },
-  data: () => ({
-
-  }),
+  data: () => ({}),
 
   beforeCreate() {
-    this.$store.dispatch('Inventory')
-    this.$store.dispatch('Dashboard')
-    this.$store.dispatch('Money')
-    this.$store.dispatch('Retail')
-    this.$store.dispatch('Reports')
-    this.$store.dispatch('Location')
-    this.$store.dispatch('SystemSettings')
-    this.$store.dispatch('Support')
-    this.$store.dispatch('Products')
+    this.$store.dispatch("Inventory");
+    this.$store.dispatch("Dashboard");
+    this.$store.dispatch("Money");
+    this.$store.dispatch("Retail");
+    this.$store.dispatch("Reports");
+    this.$store.dispatch("Location");
+    this.$store.dispatch("SystemSettings");
+    this.$store.dispatch("Support");
+    this.$store.dispatch("Products");
   },
 });
 </script>
-
 
 <style>
 #app {
@@ -70,12 +67,17 @@ export default Vue.extend({
   color: #42b983;
 }
 .mainc {
+  display: flex;
+  flex: 1;
   max-width: 100%;
+  background: url("./assets/bg1.jpg");
+  background-size: cover;
+  justify-items: center;
 }
 /* #mainmenu{
   position: absolute;
-}
-#mainrow{
-  position:relative
 } */
+#mainrow {
+  flex-direction: column;
+}
 </style>

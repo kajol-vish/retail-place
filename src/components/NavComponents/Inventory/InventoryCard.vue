@@ -24,7 +24,7 @@
                 <li v-if="item.name === 'Products'">
                   <router-link
                     to="/products"
-                    class="white--text menulist_name d-flex justify-content-left"
+                    class="text-indigo-darken-2 menulist_name d-flex justify-content-left"
                     >{{ item.name }}</router-link
                   >
                 </li>
@@ -41,7 +41,11 @@
           >
             <li v-if="index === 2 || index === 3">
               {{ key1 }}
-              <ul class="white--text" v-for="(item, id) in value1" :key="id">
+              <ul
+                class="text-indigo-darken-2"
+                v-for="(item, id) in value1"
+                :key="id"
+              >
                 <li>{{ item.name }}</li>
               </ul>
             </li>

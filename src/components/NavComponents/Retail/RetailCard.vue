@@ -17,7 +17,7 @@
         <li v-if="`${value}` === 'Point Of Sale'">
           <router-link
             to="/pointofsale"
-            class="white--text menulist_name d-flex justify-content-left"
+            class="text-indigo-darken-2 menulist_name d-flex justify-content-left"
             >{{ value }}</router-link
           >
         </li>

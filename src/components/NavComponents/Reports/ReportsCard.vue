@@ -14,7 +14,10 @@
         v-for="(value, key, index) in $store.state.reports"
         :key="index"
       >
-        <router-link to="/report-tool" class="white--text menulist_name">
+        <router-link
+          to="/report-tool"
+          class="text-indigo-darken-2 menulist_name"
+        >
           <li>{{ key }}</li>
         </router-link>
       </ul>

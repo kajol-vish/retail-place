@@ -8,10 +8,10 @@
     <v-col class="mt-10 mb-1 d-flex" height="480" id="menubarcol">
       <DashboardCard />
       <InventoryCard />
-      <MoneyCard />
-      <PermissionCard />
       <RetailCard />
+      <PermissionCard />
       <ReportsCard />
+      <MoneyCard />
       <LocationCard />
       <SystemSettingsCard />
       <SupportCard />
@@ -43,7 +43,7 @@ import SupportCard from "./NavComponents/Support/SupportCard.vue";
     ReportsCard,
     LocationCard,
     SystemSettingsCard,
-    SupportCard
+    SupportCard,
   },
 })
 export default class NavigationDrawer extends Vue {}
