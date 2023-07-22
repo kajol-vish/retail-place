@@ -5,6 +5,16 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+interface InventoryTool {
+  name: string;
+  link?: string;
+}
+
+interface InventoryData {
+  "Current Inventory": any[]; // Replace 'any' with the appropriate type for 'Current Inventory'
+  "Inventory Tools": InventoryTool[];
+}
+
 export interface stateData {
   headers: [];
   products: [];
@@ -47,8 +57,10 @@ export interface stateData {
 
   addButtonToggle: boolean;
   drawer: boolean;
-  inventory: {};
-  dashboard: {};
+  inventory: InventoryData;
+  dashboard: {
+    "Dashboard Manager": string;
+  };
   permission: {};
   money: {};
   retail: {};
@@ -101,8 +113,13 @@ export default new Vuex.Store<stateData>({
     drawer: false,
     addButtonToggle: true,
 
-    inventory: {},
-    dashboard: {},
+    inventory: {
+      "Current Inventory": [],
+      "Inventory Tools": [],
+    },
+    dashboard: {
+      "Dashboard Manager": "",
+    },
     permission: {},
     money: {},
     retail: {},
@@ -308,7 +325,6 @@ export default new Vuex.Store<stateData>({
         `http://localhost:3000/products/${this.state.productId}/`,
         data
       );
-      console.log(response);
       commit("AddProduct");
     },
     isDisabled({ commit }, { event, switchVar }) {
@@ -319,7 +335,6 @@ export default new Vuex.Store<stateData>({
     },
     async getCartData({ commit }): Promise<void> {
       const resp = await axios.get("http://localhost:3000/cartProduct");
-      console.log("Action", resp.data);
       commit("getCartData", resp.data);
     },
   },

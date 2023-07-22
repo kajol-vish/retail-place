@@ -24,14 +24,18 @@
     </router-link>
     <router-link
       to="/products"
-       class="white--text text-decoration-none px-5"
+      class="white--text text-decoration-none px-5"
       v-if="$store.state.addButtonToggle"
     >
       <v-btn type="submit" @click="submit" class="blue accent-2 white--text"
         >Submit</v-btn
       >
     </router-link>
-    <router-link to="/products"  class="white--text text-decoration-none px-5" v-else>
+    <router-link
+      to="/products"
+      class="white--text text-decoration-none px-5"
+      v-else
+    >
       <v-btn type="update" @click="update" class="blue accent-2 white--text"
         >Update</v-btn
       >
@@ -63,7 +67,6 @@ export default class PriceDetailsForm extends Vue {
       tax: this.$store.state.productTax,
     };
     const response = await axios.post("http://localhost:3000/products", data);
-    console.log(data);
     this.$store.dispatch("Products");
   }
 
