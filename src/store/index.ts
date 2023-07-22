@@ -61,13 +61,40 @@ export interface stateData {
   dashboard: {
     "Dashboard Manager": string;
   };
-  permission: {};
-  money: {};
-  retail: {};
-  reports: {};
-  location: {};
-  systemsettings: {};
-  support: {};
+  permission: {
+    Permission: string;
+    "Point of Sale": string;
+  };
+  money: {
+    "Money Manager": string;
+    "Employee Close Till": string;
+    "Payout From Till": string;
+  };
+  retail: {
+    "Check-In": string;
+    "Point Of Sale": string;
+    "Order Fulfillment": string;
+    "Customer Profile": string;
+    "Customer Profile Management": string;
+    "Retails Sale History": string;
+    "Retail Options": string[];
+  };
+  reports: {
+    "Reports Tool": string;
+  };
+  location: {
+    "Sales Limit": string;
+    "Template Manager": string;
+    Reservations: string;
+    "Import/Export Wizard": string;
+  };
+  systemsettings: {
+    "Data Sharing Option": string;
+  };
+  support: {
+    "Create A Ticket": string;
+    "View Training Documentation": string;
+  };
 }
 
 export default new Vuex.Store<stateData>({
@@ -120,13 +147,45 @@ export default new Vuex.Store<stateData>({
     dashboard: {
       "Dashboard Manager": "",
     },
-    permission: {},
-    money: {},
-    retail: {},
-    reports: {},
-    location: {},
-    systemsettings: {},
-    support: {},
+    permission: {
+      Permission: "",
+      "Point of Sale": "",
+    },
+    money: {
+      "Money Manager": "",
+      "Employee Close Till": "",
+      "Payout From Till": "",
+    },
+    retail: {
+      "Check-In": "",
+      "Point Of Sale": "",
+      "Order Fulfillment": "",
+      "Customer Profile": "",
+      "Customer Profile Management": "",
+      "Retails Sale History": "",
+      "Retail Options": [
+        "Discount Manager",
+        "Loyalty Programs",
+        "Retails Settings",
+        "Doctors",
+      ],
+    },
+    reports: {
+      "Reports Tool": "",
+    },
+    location: {
+      "Sales Limit": "",
+      "Template Manager": "",
+      Reservations: "",
+      "Import/Export Wizard": "",
+    },
+    systemsettings: {
+      "Data Sharing Option": "",
+    },
+    support: {
+      "Create A Ticket": "",
+      "View Training Documentation": "",
+    },
   },
   mutations: {
     isDisabled: (state, { event, switchVar }) => {
@@ -321,7 +380,7 @@ export default new Vuex.Store<stateData>({
         price: this.state.productPrice,
         tax: this.state.productTax,
       };
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:3000/products/${this.state.productId}/`,
         data
       );
