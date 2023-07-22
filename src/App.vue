@@ -6,6 +6,9 @@
           <h2>KV</h2>
         </v-btn>
       </div>
+      <v-toolbar-title class="white--text text-h6 ml-3"
+        >Retail Place</v-toolbar-title
+      >
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon
         @click="$store.state.drawer = !$store.state.drawer"
